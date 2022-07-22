@@ -1,6 +1,7 @@
 package com.silverbullet.asteroidsradar.utils
 
 import com.silverbullet.asteroidsradar.model.Asteroid
+import com.silverbullet.asteroidsradar.model.ImageOfDayResponse
 
 object TestUtils {
 
@@ -17,12 +18,22 @@ object TestUtils {
                     33.0,
                     33.0,
                     false,
-                    "date",
+                    "2022-07-03",
                     33.0,
                     33.0
                 )
             )
         }
         return result
+    }
+
+    /**
+     * Return a list of 2 images with 2 different date
+     */
+    fun generateTestImageOfTheDayList(): List<ImageOfDayResponse>{
+        return listOf(
+            ImageOfDayResponse("IMAGE2","2022-07-2","","","","","",""),
+            ImageOfDayResponse("IMAGE1","2022-07-1","","","","","","")
+        )
     }
 }

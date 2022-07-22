@@ -23,6 +23,4 @@ data class ImageOfDayResponse(
     val title: String,
     @SerializedName("url")
     @PrimaryKey val url: String
-){
-    constructor():this("","","","","","","","")
-}
+)
