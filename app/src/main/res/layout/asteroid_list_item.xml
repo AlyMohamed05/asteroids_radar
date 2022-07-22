@@ -6,11 +6,16 @@
 
     <data>
 
+        <variable
+            name="asteroid"
+            type="com.silverbullet.asteroidsradar.model.Asteroid" />
+
     </data>
 
     <androidx.cardview.widget.CardView
+        android:layout_marginBottom="8dp"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         app:cardCornerRadius="30dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:text="@{asteroid.name}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Asteroid Name" />
@@ -33,6 +39,7 @@
                 style="@style/TextAppearance.Material3.BodyLarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{asteroid.closeApproachDate}"
                 android:textColor="#A9A9A9"
                 android:textStyle="bold"
                 android:layout_marginStart="4dp"
@@ -47,6 +54,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:isPotentiallyHazardous="@{asteroid.isPotentiallyHazardous}"
                 tools:ignore="contentDescription"
                 tools:src="@drawable/ic_safe" />
 
