@@ -2,6 +2,7 @@ package com.silverbullet.asteroidsradar.model
 
 
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "image_of_the_day_table")
@@ -21,5 +22,7 @@ data class ImageOfDayResponse(
     @SerializedName("title")
     val title: String,
     @SerializedName("url")
-    val url: String
-)
+    @PrimaryKey val url: String
+){
+    constructor():this("","","","","","","","")
+}
