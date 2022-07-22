@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="home_horizontal_padding">6dp</dimen>
+    <dimen name="home_top_padding">4dp</dimen>
+
+    <dimen name="asteroid_item_padding">8dp</dimen>
+
+</resources>
