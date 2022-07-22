@@ -3,7 +3,7 @@ package com.silverbullet.asteroidsradar.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "asteroids_table")
 data class Asteroid(
     @PrimaryKey val id: String,
     val name: String,
