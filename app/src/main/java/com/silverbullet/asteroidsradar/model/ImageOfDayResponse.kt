@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "image_of_the_day_table")
 data class ImageOfDayResponse(
     @SerializedName("copyright")
-    val copyright: String,
+    val copyright: String?,
     @SerializedName("date")
     val date: String,
     @SerializedName("explanation")

@@ -1,5 +1,6 @@
 package com.silverbullet.asteroidsradar.database
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -14,4 +15,7 @@ interface ImageOfTheDayDao {
 
     @Query("SELECT * FROM image_of_the_day_table ORDER BY date DESC LIMIT 1")
     suspend fun getImageOfTheDay(): ImageOfDayResponse?
+
+    @Query("SELECT * FROM image_of_the_day_table ORDER BY date DESC LIMIT 1")
+    fun getImageOfTheDayLive(): LiveData<ImageOfDayResponse?>
 }
