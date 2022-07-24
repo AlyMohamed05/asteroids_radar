@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/drawable/card_gradient.xml" value="0.1815" />
         <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/drawable/ic_safe.xml" value="0.1815" />
+        <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/layout-land/asteroid_data_fragment.xml" value="0.27361111111111114" />
+        <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/layout-land/home_fragment.xml" value="0.27361111111111114" />
         <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/layout/asteroid_data_fragment.xml" value="0.264" />
         <entry key="..\:/Users/Aly/AndroidStudioProjects/AsteroidsRadar/app/src/main/res/layout/asteroid_list_item.xml" value="0.2212962962962963" />
