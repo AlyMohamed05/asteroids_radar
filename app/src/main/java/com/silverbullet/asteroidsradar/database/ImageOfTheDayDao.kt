@@ -18,4 +18,7 @@ interface ImageOfTheDayDao {
 
     @Query("SELECT * FROM image_of_the_day_table ORDER BY date DESC LIMIT 1")
     fun getImageOfTheDayLive(): LiveData<ImageOfDayResponse?>
+
+    @Query("DELETE FROM image_of_the_day_table WHERE date< :today")
+    suspend fun clearBeforeToday(today: String)
 }
