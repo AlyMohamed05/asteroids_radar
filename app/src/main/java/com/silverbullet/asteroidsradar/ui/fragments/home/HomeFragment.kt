@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.silverbullet.asteroidsradar.adapters.HomeListAdapter
@@ -37,7 +39,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         homeListAdapter = HomeListAdapter()
+        homeListAdapter.setAsteroidItemClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToAsteroidDataFragment(it)
+            )
+        }
         binding.asteroidsList.adapter = homeListAdapter
+        binding.asteroidsList.adapter?.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         setupObservers()
     }
 
@@ -50,7 +58,7 @@ class HomeFragment : Fragment() {
             Observer { isLoading -> handleLoadingState(isLoading) })
         homeViewModel.homeEvent.observe(
             viewLifecycleOwner,
-            Observer { event-> handleHomeEvent(event) }
+            Observer { event -> handleHomeEvent(event) }
         )
         homeViewModel.asteroidsList.observe(
             viewLifecycleOwner,
@@ -68,20 +76,22 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun handleHomeEvent(event: HomeEvent){
-        when(event){
-            is HomeEvent.ShowErrorMessage->{
-                Snackbar.make(view!!,event.message,Snackbar.LENGTH_LONG)
+    private fun handleHomeEvent(event: HomeEvent) {
+        when (event) {
+            is HomeEvent.ShowErrorMessage -> {
+                Snackbar.make(view!!, event.message, Snackbar.LENGTH_LONG)
                     .setBackgroundTint(Color.RED)
                     .show()
+                homeViewModel.doneHandleEvent()
             }
-            HomeEvent.IDLE ->{}
+            HomeEvent.IDLE -> {}
         }
     }
 
     private fun showImageOfTheDay(imageOfTheDay: ImageOfDayResponse?) {
         if (imageOfTheDay != null) {
             binding.imageOfDayView.apply {
+                contentDescription = imageOfTheDay.title
                 Glide.with(this).load(imageOfTheDay.url).into(this)
             }
         }

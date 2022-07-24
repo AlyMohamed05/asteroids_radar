@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Asteroids Radar</string>
+    <string name="close_approach_data">Close approach data</string>
+    <string name="absolute_magnitude">Absolute magnitude</string>
+    <string name="estimated_diameter">Estimated diameter</string>
+    <string name="relative_velocity">Relative velocity</string>
+    <string name="distance_from_earth">Distance from Earth</string>
 </resources>

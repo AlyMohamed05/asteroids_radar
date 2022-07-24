@@ -2,6 +2,7 @@ package com.silverbullet.asteroidsradar.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "asteroids_table")
 data class Asteroid(
@@ -13,4 +14,4 @@ data class Asteroid(
     val closeApproachDate: String,
     val relativeVelocity: Double,
     val distanceFromEarth: Double
-)
+): Serializable
