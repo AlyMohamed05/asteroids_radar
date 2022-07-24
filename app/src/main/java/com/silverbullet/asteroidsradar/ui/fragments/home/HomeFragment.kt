@@ -2,9 +2,8 @@ package com.silverbullet.asteroidsradar.ui.fragments.home
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -12,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
+import com.silverbullet.asteroidsradar.R
 import com.silverbullet.asteroidsradar.adapters.HomeListAdapter
 import com.silverbullet.asteroidsradar.databinding.HomeFragmentBinding
 import com.silverbullet.asteroidsradar.model.ImageOfDayResponse
@@ -45,8 +45,18 @@ class HomeFragment : Fragment() {
             )
         }
         binding.asteroidsList.adapter = homeListAdapter
-        binding.asteroidsList.adapter?.stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+        binding.asteroidsList.adapter?.stateRestorationPolicy =
+            RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
         setupObservers()
+        activity?.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.filter_menu,menu)
+            }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                homeListAdapter.applyFilter(menuItem.itemId)
+                return true
+            }
+        }, viewLifecycleOwner)
     }
 
     /**
@@ -62,7 +72,7 @@ class HomeFragment : Fragment() {
         )
         homeViewModel.asteroidsList.observe(
             viewLifecycleOwner,
-            Observer { newAsteroidsList -> homeListAdapter.submitList(newAsteroidsList) })
+            Observer { newAsteroidsList -> homeListAdapter.addNewList(newAsteroidsList) })
         homeViewModel.imageOfTheDay.observe(
             viewLifecycleOwner,
             Observer { imageOfTheDay -> showImageOfTheDay(imageOfTheDay) })
